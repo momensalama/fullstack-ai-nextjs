@@ -9,15 +9,16 @@ export interface Entry {
 
 export type QaEntry = Pick<Entry, "id" | "content" | "createdAt">;
 
-interface Analysis {
+export interface Analysis {
   id: string;
   createdAt: Date;
   updatedAt: Date;
   entryId: string;
+  userId: string;
   mood: string;
+  subject: string;
+  negative: boolean;
   summary: string;
   color: string;
-  negative: boolean;
-  subject: string;
   sentimentScore: number;
 }

@@ -1,3 +1,4 @@
+import HistoryChart from "@/components/HistoryChart";
 import { getUserFromClerkID } from "@/utils/auth";
 import { prisma } from "@/utils/db";
 
@@ -7,20 +8,26 @@ const getAnalyses = async () => {
     where: {
       userId: user.id,
     },
-    select: {
-      sentimentScore: true,
+    orderBy: {
+      createdAt: "asc",
     },
   });
 
   const sum = analyses.reduce((acc, curr) => acc + curr.sentimentScore, 0);
-  const avg = Math.round(sum / analyses.length);
+  const average = Math.round(sum / analyses.length);
 
-  return { analyses, avg };
+  return { analyses, average };
 };
 
 async function page() {
-  const { analyses, avg } = await getAnalyses();
-  return <div>History</div>;
+  const { analyses, average } = await getAnalyses();
+  return (
+    <div className="h-full w-full px-6 py-8">
+      <h1 className="text-2xl mb-4">{`Avg. Sentiment: ${average}`}</h1>
+
+      <HistoryChart data={analyses} />
+    </div>
+  );
 }
 
 export default page;
