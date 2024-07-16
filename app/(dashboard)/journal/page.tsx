@@ -1,7 +1,6 @@
 import EntryCard from "@/components/EntryCard";
 import NewEntryCard from "@/components/NewEntryCard";
 import Question from "@/components/Question";
-import { analyzeEntry } from "@/utils/ai";
 import { getUserFromClerkID } from "@/utils/auth";
 import { prisma } from "@/utils/db";
 
@@ -18,10 +17,6 @@ const getEntries = async () => {
       analysis: true,
     },
   });
-
-  // await analyzeEntry(
-  //   "Today was a eh, ok day I guess. I found a new coffee shop that was cool but then I got a flat tire. :)"
-  // );
 
   return entries;
 };

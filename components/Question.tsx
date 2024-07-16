@@ -1,12 +1,17 @@
 "use client";
 import { askQuestion } from "@/utils/actions";
 import { useState } from "react";
+import Spinner from "./Spinner";
 
 const Question = () => {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState(null);
   const [loading, setLoading] = useState(false);
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (
+    e:
+      | React.FormEvent<HTMLFormElement>
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
     e.preventDefault();
     setLoading(true);
 
@@ -17,26 +22,38 @@ const Question = () => {
     setQuestion("");
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={question}
-          onChange={(e) => setQuestion(e.target.value)}
-          className="border border-gray-300 rounded-md p-2 text-lg"
-          disabled={loading}
-          placeholder="Ask a question..."
-        />
+    <div className="my-3">
+      <form className="flex items-center flex-wrap gap-4 w-full ">
+        <label htmlFor="question" className="w-full md:w-1/3">
+          <input
+            type="text"
+            value={question}
+            name="question"
+            id="question"
+            placeholder="Ask a question..."
+            inputMode="text"
+            onChange={(e) => setQuestion(e.target.value)}
+            disabled={loading}
+            className="border border-gray-300 w-full rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
+        </label>
         <button
+          onClick={handleSubmit}
           disabled={loading}
-          type="submit"
-          className="bg-blue-400 px-4 py-2 rounded-md"
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full md:w-auto"
         >
           Ask
         </button>
       </form>
-      {loading && <p>Loading...</p>}
-      {answer && <p className="my-4 text-xl">{answer}</p>}
+
+      {loading ? (
+        <div className="my-3">
+          <Spinner />
+        </div>
+      ) : null}
+      {answer ? (
+        <p className="text-lg bg-gray-200 p-4 rounded-md my-4">{answer}</p>
+      ) : null}
     </div>
   );
 };

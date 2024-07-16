@@ -14,7 +14,7 @@ CREATE TABLE "JournalEntry" (
     "updatedAt" DATETIME NOT NULL,
     "userId" TEXT NOT NULL,
     "content" TEXT NOT NULL,
-    CONSTRAINT "JournalEntry_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
+    CONSTRAINT "JournalEntry_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 -- CreateTable
@@ -30,7 +30,7 @@ CREATE TABLE "Analysis" (
     "summary" TEXT NOT NULL,
     "color" TEXT NOT NULL,
     "sentimentScore" REAL NOT NULL DEFAULT 0,
-    CONSTRAINT "Analysis_entryId_fkey" FOREIGN KEY ("entryId") REFERENCES "JournalEntry" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT "Analysis_entryId_fkey" FOREIGN KEY ("entryId") REFERENCES "JournalEntry" ("id") ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT "Analysis_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE CASCADE ON UPDATE CASCADE
 );
 

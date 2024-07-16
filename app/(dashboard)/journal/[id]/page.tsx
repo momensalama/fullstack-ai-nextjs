@@ -25,7 +25,6 @@ const JournalEditorPage = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="w-full h-full">
       <Editor entry={entry} />
-      <h1>{entry?.content}</h1>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useAutosave } from "react-autosave";
 import Spinner from "./Spinner";
 import { useRouter } from "next/navigation";
-import { updateEntry } from "@/utils/actions";
+import { deleteEntry, updateEntry } from "@/utils/actions";
 
 const Editor = ({ entry }: any) => {
   const [text, setText] = useState(entry.content);
@@ -30,7 +30,7 @@ const Editor = ({ entry }: any) => {
   const router = useRouter();
 
   const handleDelete = async () => {
-    // await deleteEntry(entry.id);
+    await deleteEntry(entry.id);
     router.push("/journal");
   };
 
@@ -76,7 +76,7 @@ const Editor = ({ entry }: any) => {
         <div>
           <ul role="list" className="divide-y divide-gray-200">
             <li className="py-4 px-8 ">
-              <div className="text-xl font-semibold w-1/3">Summary</div>
+              <h3 className="text-xl font-semibold w-1/3">Summary</h3>
               <div className="text-xl">{summary}</div>
             </li>
             {analysisData.map((item) => (
@@ -84,9 +84,9 @@ const Editor = ({ entry }: any) => {
                 key={item.name}
                 className="py-4 px-8 flex items-center justify-between"
               >
-                <div className="text-xl font-semibold w-1/3 me-3">
+                <h3 className="text-xl font-semibold w-1/3 me-3">
                   {item.name}
-                </div>
+                </h3>
                 <div className="text-xl">{item.value}</div>
               </li>
             ))}
@@ -97,7 +97,7 @@ const Editor = ({ entry }: any) => {
                 type="button"
                 className="rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
               >
-                Delete
+                Delete Entry
               </button>
             </li>
           </ul>

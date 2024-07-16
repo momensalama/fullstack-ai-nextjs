@@ -78,3 +78,17 @@ export const askQuestion = async (question: string) => {
 
   return answer;
 };
+
+export const deleteEntry = async (entryId: string) => {
+  const user = await getUserFromClerkID();
+  await prisma.journalEntry.delete({
+    where: {
+      userId_id: {
+        userId: user.id,
+        id: entryId,
+      },
+    },
+  });
+
+  revalidatePath("/app/journal");
+};
