@@ -13,8 +13,6 @@ const links = [
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
 
-  // const activeLinkStyle = "bg-black/10 text-black";
-
   return (
     <div className="h-screen w-screen relative">
       <aside className="absolute w-[200px] top-0 left-0 h-full border-r border-black/10">
@@ -24,11 +22,13 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
             {links.map((link) => (
               <li
                 key={link.label}
-                className={`text-xl my-2 py-1 px-2 rounded ${
+                className={`text-xl my-2 py-1 px-2 rounded hover:bg-black/10 transition-colors ${
                   link.href === pathName ? "bg-black/10 text-black" : ""
                 }`}
               >
-                <Link href={link.href}>{link.label}</Link>
+                <Link href={link.href} className="w-full block">
+                  {link.label}
+                </Link>
               </li>
             ))}
           </ul>
