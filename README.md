@@ -1,10 +1,6 @@
 # Journal App
 
-A journal application that allows users to log in and manage journal entries with standard CRUD operations. The entries are analyzed and given AI-generated sentiment values, summaries, and colors.
-
-## Project Overview
-
-This journal application provides users with a seamless experience for logging and managing journal entries. It includes AI features that analyze each entry and provide sentiment values, summaries, and color-coded feedback.
+A journal application that allows users to log in and manage journal entries with standard CRUD operations. The entries are analyzed and given AI-generated sentiment values, summaries, and colors, providing users with a seamless experience for logging and managing their journals.
 
 ## Live Demo
 
