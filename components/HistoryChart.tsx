@@ -14,6 +14,15 @@ const CustomTooltip = ({ payload, label, active }: any) => {
 
   if (active) {
     const analysis = payload[0].payload;
+
+    if (!analysis) {
+      return (
+        <div>
+          <p className="label text-sm text-black/30">{dateLabel}</p>
+          <p className="intro text-xl uppercase">No data</p>
+        </div>
+      );
+    }
     return (
       <div className="p-8 custom-tooltip bg-white/5 shadow-md border border-black/10 rounded-lg backdrop-blur-md relative">
         <div
@@ -30,6 +39,16 @@ const CustomTooltip = ({ payload, label, active }: any) => {
 };
 
 const HistoryChart = ({ data }: { data: Analysis[] }) => {
+  if (!data.length) {
+    return (
+      <div className="flex justify-center items-center h-full w-full">
+        <p className="text-2xl ">
+          no data found, start journaling to see your mood history. 📝
+        </p>
+      </div>
+    );
+  }
+
   return (
     <ResponsiveContainer width="100%" height="100%">
       <LineChart width={300} height={100} data={data}>
