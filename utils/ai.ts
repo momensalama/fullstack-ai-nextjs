@@ -2,13 +2,12 @@ import { QaEntry } from "@/types";
 import { PromptTemplate } from "@langchain/core/prompts";
 import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 import { loadQARefineChain } from "langchain/chains";
+
 import { Document } from "langchain/document";
 import { StructuredOutputParser } from "langchain/output_parsers";
 import { MemoryVectorStore } from "langchain/vectorstores/memory";
 import { z } from "zod";
 import { groq } from "./helpers";
-import Groq from "groq-sdk";
-import { OpenAI } from "@langchain/openai";
 import { ChatGroq } from "@langchain/groq";
 
 const parser = StructuredOutputParser.fromZodSchema(
