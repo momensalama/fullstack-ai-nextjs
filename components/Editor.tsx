@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useAutosave } from "react-autosave";
-import Spinner from "./Spinner";
+import Spinner from "./SpinnerMini";
 import { useRouter } from "next/navigation";
 import { deleteEntry, updateEntry } from "@/utils/actions";
 

@@ -1,7 +1,7 @@
 "use client";
 import { askQuestion } from "@/utils/actions";
 import { useState } from "react";
-import Spinner from "./Spinner";
+import Spinner from "./SpinnerMini";
 
 const Question = () => {
   const [question, setQuestion] = useState("");
