@@ -14,8 +14,8 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const pathName = usePathname();
 
   return (
-    <div className="h-screen w-screen relative">
-      <aside className="absolute w-[200px] top-0 left-0 h-full border-r border-black/10">
+    <div className="h-screen flex relative">
+      <aside className="border-r border-black/10 w-48">
         <h1 className="px-4 my-4 text-3xl">MOOD</h1>
         <nav>
           <ul className="px-4">
@@ -34,7 +34,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           </ul>
         </nav>
       </aside>
-      <div className="ml-[200px] h-full">
+      <div className="h-full flex-1">
         <header className="h-[60px] border-b border-black/10">
           <div className="h-full w-full px-6 flex items-center justify-end">
             <UserButton />

@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-// next.config.mjs
 const nextConfig = {
   webpack: (config, { isServer }) => {
     // Add .cjs and .cts extensions to resolve

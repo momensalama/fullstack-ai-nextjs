@@ -12,6 +12,12 @@
     animation: rotate 1s infinite linear;
   }
 
+  .entries {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
   @keyframes rotate {
     to {
       transform: rotate(1turn);

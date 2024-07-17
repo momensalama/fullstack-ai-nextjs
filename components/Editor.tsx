@@ -48,7 +48,7 @@ const Editor = ({ entry }: any) => {
   });
 
   return (
-    <div className="w-full h-full grid grid-cols-3 gap-0 relative">
+    <div className="w-full h-full flex flex-wrap md:flex-nowrap gap-0 relative">
       <div className="absolute left-0 top-0 p-2">
         {isSaving ? (
           <SpinnerMini />
@@ -56,7 +56,7 @@ const Editor = ({ entry }: any) => {
           <div className="w-[16px] h-[16px] rounded-full bg-green-500"></div>
         )}
       </div>
-      <div className="col-span-2">
+      <div className="w-full">
         <textarea
           value={text}
           name="content"
@@ -64,7 +64,7 @@ const Editor = ({ entry }: any) => {
           className="w-full h-full text-xl p-8"
         />
       </div>
-      <div className="border-l border-black/5">
+      <div className="border-l border-black/5 mt-4 md:mt-0 ">
         <div
           className="h-[100px] text-white p-8"
           style={{
