@@ -1,8 +1,7 @@
 import { QaEntry } from "@/types";
-import { PromptTemplate } from "@langchain/core/prompts";
 import { GoogleGenerativeAIEmbeddings } from "@langchain/google-genai";
 import { loadQARefineChain } from "langchain/chains";
-
+import { PromptTemplate } from "@langchain/core/prompts";
 import { ChatGroq } from "@langchain/groq";
 import { Document } from "langchain/document";
 import { StructuredOutputParser } from "langchain/output_parsers";
