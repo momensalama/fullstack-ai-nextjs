@@ -4,7 +4,7 @@ A journal application that allows users to log in and manage journal entries wit
 
 ## Live Demo
 
-Check out the [live demo of the project](https://fulltack-ai-app-nextjs-1.vercel.app).
+Check out the [live demo of the project](https://fullstack-ai-nextjs14.vercel.app).
 
 ## Key Features
 
