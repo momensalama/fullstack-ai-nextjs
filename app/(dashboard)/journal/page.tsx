@@ -4,6 +4,10 @@ import Question from "@/components/Question";
 import { getUserFromClerkID } from "@/utils/auth";
 import { prisma } from "@/utils/db";
 
+export const metadata = {
+  title: "Journal",
+};
+
 const getEntries = async () => {
   const user = await getUserFromClerkID();
   const entries = await prisma.journalEntry.findMany({

@@ -1,5 +1,6 @@
 "use client";
 import { Analysis } from "@/types";
+import Link from "next/link";
 import { ResponsiveContainer, LineChart, Line, XAxis, Tooltip } from "recharts";
 
 const CustomTooltip = ({ payload, label, active }: any) => {
@@ -41,10 +42,17 @@ const CustomTooltip = ({ payload, label, active }: any) => {
 const HistoryChart = ({ data }: { data: Analysis[] }) => {
   if (!data.length) {
     return (
-      <div className="flex justify-center items-center h-full w-full">
+      <div className="flex justify-center items-center h-full w-full flex-col">
         <p className="text-2xl ">
-          no data found, start journaling to see your mood history. 📝
+          no data found, start journaling to see your mood history.
         </p>
+
+        <Link
+          href="/journal"
+          className="inline-block bg-accent-500 text-primary-800 my-4 text-xl underline"
+        >
+          Start Journaling 📝
+        </Link>
       </div>
     );
   }

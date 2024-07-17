@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useAutosave } from "react-autosave";
-import Spinner from "./SpinnerMini";
+import SpinnerMini from "./SpinnerMini";
 import { useRouter } from "next/navigation";
 import { deleteEntry, updateEntry } from "@/utils/actions";
 
@@ -51,7 +51,7 @@ const Editor = ({ entry }: any) => {
     <div className="w-full h-full grid grid-cols-3 gap-0 relative">
       <div className="absolute left-0 top-0 p-2">
         {isSaving ? (
-          <Spinner />
+          <SpinnerMini />
         ) : (
           <div className="w-[16px] h-[16px] rounded-full bg-green-500"></div>
         )}

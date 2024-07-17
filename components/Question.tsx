@@ -1,7 +1,7 @@
 "use client";
 import { askQuestion } from "@/utils/actions";
 import { useState } from "react";
-import Spinner from "./SpinnerMini";
+import SpinnerMini from "./SpinnerMini";
 
 const Question = () => {
   const [question, setQuestion] = useState("");
@@ -48,7 +48,7 @@ const Question = () => {
 
       {loading ? (
         <div className="my-3">
-          <Spinner />
+          <SpinnerMini />
         </div>
       ) : null}
       {answer ? (
