@@ -23,10 +23,10 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
               <li key={link.label}>
                 <Link
                   href={link.href}
-                  className={`text-xl block text-[#666666] border-b-2 border-black border-opacity-0 hover:text-[#000] hover:border-opacity-100 py-4 transition-colors ${
+                  className={`text-xl block border-b-2 border-black border-opacity-0 hover:text-[#000] hover:border-opacity-100 py-4 transition-colors ${
                     link.href === pathName
                       ? " border-opacity-100 text-[#000]"
-                      : ""
+                      : "text-[#666666]"
                   }`}
                 >
                   {link.label}
