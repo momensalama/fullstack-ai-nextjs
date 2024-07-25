@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     description: "A simple journaling app to keep your thoughts organized.",
     images: [
       {
-        url: "./public/home.png",
+        url: "https://fullstack-next-js-v14.vercel.app",
         width: 1200,
         height: 630,
         alt: "The Journal app",
