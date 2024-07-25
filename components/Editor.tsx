@@ -30,8 +30,14 @@ const Editor = ({ entry }: any) => {
   const router = useRouter();
 
   const handleDelete = async () => {
-    await deleteEntry(entry.id);
-    router.push("/journal");
+    const confirm = window.confirm(
+      "Are you sure you want to delete this entry?"
+    );
+
+    if (confirm) {
+      await deleteEntry(entry.id);
+      router.push("/journal");
+    }
   };
 
   useAutosave({
@@ -48,7 +54,7 @@ const Editor = ({ entry }: any) => {
   });
 
   return (
-    <div className="w-full h-full flex flex-wrap md:flex-nowrap gap-0 relative">
+    <div className="h-[100dvh] flex flex-wrap md:flex-nowrap gap-0 relative">
       <div className="absolute left-0 top-0 p-2">
         {isSaving ? (
           <SpinnerMini />

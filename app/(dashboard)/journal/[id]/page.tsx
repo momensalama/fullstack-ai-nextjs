@@ -1,6 +1,5 @@
 import Editor from "@/components/Editor";
-import { getUserFromClerkID } from "@/utils/auth";
-import { prisma } from "@/utils/db";
+import { getEntry } from "../../../../utils/prismaQueries";
 
 export async function generateMetadata({ params }: { params: { id: string } }) {
   const entry = await getEntry(params.id);
@@ -11,31 +10,10 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
   };
 }
 
-const getEntry = async (id: string) => {
-  const user = await getUserFromClerkID();
-  const entry = await prisma.journalEntry.findUnique({
-    where: {
-      userId_id: {
-        userId: user.id,
-        id,
-      },
-    },
-    include: {
-      analysis: true,
-    },
-  });
-
-  return entry;
-};
-
 const JournalEditorPage = async ({ params }: { params: { id: string } }) => {
   const entry = await getEntry(params.id);
 
-  return (
-    <div className="w-full h-full">
-      <Editor entry={entry} />
-    </div>
-  );
+  return <Editor entry={entry} />;
 };
 
 export default JournalEditorPage;

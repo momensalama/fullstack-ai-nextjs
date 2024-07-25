@@ -11,6 +11,21 @@ export const metadata: Metadata = {
     default: "The best Journal app, period.",
   },
   description: "A simple journaling app to keep your thoughts organized.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://fullstack-next-js-v14.vercel.app",
+    siteName: "The Journal app",
+    description: "A simple journaling app to keep your thoughts organized.",
+    images: [
+      {
+        url: "./public/home.png",
+        width: 1200,
+        height: 630,
+        alt: "The Journal app",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

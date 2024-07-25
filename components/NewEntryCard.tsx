@@ -1,21 +1,21 @@
 "use client";
 import { createNewEntry } from "@/utils/actions";
 import { useRouter } from "next/navigation";
+import CreateEntryBtn from "./CreateEntryBtn";
 
 const NewEntryCard = () => {
   const router = useRouter();
 
-  const handleOnClick = async (id: string) => {
-    router.push(`/journal/${id}`);
+  const handleOnClick = async () => {
+    const data = await createNewEntry();
+    router.push(`/journal/${data.id}`);
   };
   return (
     <form
-      action={() => {
-        createNewEntry().then((entry) => handleOnClick(entry.id));
-      }}
-      className="cursor-pointer overflow-hidden rounded-lg bg-white shadow px-4 py-5 sm:p-6 "
+      action={handleOnClick}
+      className=" flex justify-center rounded-lg bg-white shadow "
     >
-      <button className="text-3xl">New Entry</button>
+      <CreateEntryBtn pendingLabel="creating..." label="New Entry" />
     </form>
   );
 };
