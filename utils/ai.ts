@@ -60,20 +60,20 @@ export async function analyzeEntry(content: string) {
         content: input,
       },
     ],
-    model: "gemma-7b-it",
+    model: "llama-3.3-70b-versatile",
     temperature: 0,
   });
 
-  const reslut = model.choices[0].message.content;
+  const result = model.choices[0].message.content;
 
-  if (!reslut) {
+  if (!result) {
     throw new Error("Invalid result");
   }
 
-  const parsed = await parser.parse(reslut);
+  const parsed = await parser.parse(result);
 
   try {
-    if (reslut !== null) {
+    if (result !== null) {
       return parsed;
     } else {
       throw new Error("Invalid result");
@@ -93,7 +93,7 @@ export const qa = async (question: string, entries: QaEntry[]) => {
   );
   const model = new ChatGroq({
     apiKey: process.env.GROQ_API_KEY,
-    model: "gemma-7b-it",
+    model: "llama-3.3-70b-versatile",
     temperature: 0,
   });
   const chain = loadQARefineChain(model);
