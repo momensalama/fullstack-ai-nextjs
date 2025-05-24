@@ -13,7 +13,21 @@ export async function generateMetadata({ params }: { params: { id: string } }) {
 const JournalEditorPage = async ({ params }: { params: { id: string } }) => {
   const entry = await getEntry(params.id);
 
-  return <Editor entry={entry} />;
+  // Serialize the entry data
+  const serializedEntry = {
+    ...entry,
+    createdAt: entry?.createdAt.toISOString(),
+    updatedAt: entry?.updatedAt.toISOString(),
+    analysis: entry?.analysis
+      ? {
+          ...entry.analysis,
+          createdAt: entry.analysis.createdAt.toISOString(),
+          updatedAt: entry.analysis.updatedAt.toISOString(),
+        }
+      : null,
+  };
+
+  return <Editor entry={serializedEntry} />;
 };
 
 export default JournalEditorPage;
